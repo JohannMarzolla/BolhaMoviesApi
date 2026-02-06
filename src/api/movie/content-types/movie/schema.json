@@ -5,7 +5,7 @@
     "singularName": "movie",
     "pluralName": "movies",
     "displayName": "Movie",
-    "description": ""
+    "description": "Filmes do TMDB"
   },
   "options": {
     "draftAndPublish": true
@@ -14,8 +14,7 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
-      "unique": false
+      "required": true
     },
     "original_title": {
       "type": "string"
@@ -64,8 +63,11 @@
       "type": "boolean",
       "default": false
     },
-    "genre_ids": {
-      "type": "json"
+    "genres": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::genre.genre",
+      "inversedBy": "movies"
     }
   }
 }
