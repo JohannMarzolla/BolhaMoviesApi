@@ -1,61 +1,111 @@
-# 🚀 Getting started with Strapi
+# 🎬 BolhaMovies API
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+API desenvolvida com **Strapi** para fornecer dados de filmes ao projeto **BolhaMovies Front-end**. Esta API é responsável por gerenciar filmes, gêneros e seus relacionamentos, servindo os dados via **REST**.
 
-### `develop`
-
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
-
-```
-npm run develop
-# or
-yarn develop
-```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
-```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+> ⚠️ **Importante:** esta API **precisa estar rodando antes** de iniciar o projeto front-end, pois todos os dados exibidos na aplicação vêm dela.
 
 ---
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+## 🔗 Projeto relacionado
+
+👉 Front-end que consome esta API:
+[https://github.com/JohannMarzolla/BolhaMovies](https://github.com/JohannMarzolla/BolhaMovies)
+
+---
+
+## 🚀 Tecnologias utilizadas
+
+* Strapi
+* Node.js
+* JavaScript / TypeScript
+* SQLite (banco padrão do Strapi em ambiente de desenvolvimento)
+
+---
+
+## 📦 Instalação
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/JohannMarzolla/BolhaMoviesApi
+cd BolhaMoviesApi
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Como rodar o projeto
+
+### Modo desenvolvimento (recomendado)
+
+Inicia a aplicação com **auto reload**, ideal para desenvolvimento local:
+
+```bash
+npm run develop
+```
+
+Após iniciar, a API estará disponível em:
+
+```
+http://localhost:1337
+```
+
+---
+
+## 📡 Endpoints utilizados na aplicação
+
+### Listar filmes com gêneros relacionados
+
+Este é o **endpoint principal utilizado pelo front-end**.
+
+**Método:** `GET`
+**URL completa:**
+
+```
+http://localhost:1337/api/movies?populate=genres
+```
+
+**Descrição:**
+
+Retorna a lista de filmes cadastrados na API, incluindo os gêneros associados a cada filme.
+O parâmetro `populate=genres` garante que os dados relacionais sejam retornados em uma única requisição, evitando múltiplas chamadas no front-end.
+
+**Exemplo de uso no front-end:**
+
+```ts
+fetch('http://localhost:1337/api/movies?populate=genres')
+```
+
+### Observação
+
+Os endpoints REST desta API são **gerados automaticamente pelo Strapi** a partir dos *Content Types*.
+Este README documenta apenas os endpoints **efetivamente consumidos pela aplicação front-end**.
+
+---
+
+## ⚙️ Estrutura básica do projeto (Strapi)
+
+O projeto segue a estrutura padrão do Strapi:
+
+```txt
+src/
+├── api/           # Content Types (movies, genres, etc)
+├── components/    # Componentes reutilizáveis
+├── extensions/    # Extensões do Strapi
+├── config/        # Configurações do projeto
+└── admin/         # Painel administrativo
+```
+
+---
+
+## 👨‍💻 Autor
+
+**Johann Marzolla**
+
+GitHub: [https://github.com/JohannMarzolla](https://github.com/JohannMarzolla)
+
